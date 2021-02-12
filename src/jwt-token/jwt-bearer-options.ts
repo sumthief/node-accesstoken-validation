@@ -21,5 +21,8 @@ export default class JwtBearerOptions {
         public audience: string = "",
 
        
-        public checkAudience: boolean = true) { }
+        public checkAudience: boolean = true,
+
+
+        public tolerance: number = 0) { }
 }

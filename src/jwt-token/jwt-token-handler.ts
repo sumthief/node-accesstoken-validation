@@ -27,7 +27,7 @@ export default class JwtTokenHandler {
             await ClientDiscovery.loadJsonWebKeySet(this.options.authority);
 
         var discoveryDocument = DiscoveryDocumentResponse.getInstance();
-        var claims = JWT.verify(token, discoveryDocument.KeySet);
+        var claims = JWT.verify(token, discoveryDocument.KeySet, { clockTolerance: `${this.options.tolerance} secs` });
 
         if (!this.options.checkAudience)
             return claims;

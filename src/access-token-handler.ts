@@ -29,11 +29,12 @@ export default class AccessTokenHandler {
             tokenTypeHint = TokenTypes.AccessToken,
             enableCache = true,
             cacheDuration = 300,
-            checkAudience = true
+            checkAudience = true,
+            tolerance = 0
         }: any) {
 
         this.options = new AuthenticationOptions(authority, apiName, apiSecret, supportedTokens, tokenTypeHint, enableCache, cacheDuration);
-        this.jwtTokenHandler = new JwtTokenHandler(new JwtBearerOptions(authority, requireHttpsMetadata, apiName, checkAudience));
+        this.jwtTokenHandler = new JwtTokenHandler(new JwtBearerOptions(authority, requireHttpsMetadata, apiName, checkAudience, tolerance));
 
         if (apiSecret === "") {
             this.options.supportedTokens = SupportedTokens.Jwt;
